@@ -1,6 +1,22 @@
-// Course structure. When Tim finishes a recording, upload it to Bunny Stream
-// and paste its video ID into `videoId`. Workbooks go in /workbooks (later: R2).
+// Course structure. Workbooks go in /workbooks (later: R2).
 (() => {
+// Bunny Stream video IDs. After uploading a lesson to Bunny, paste its Video ID
+// between the quotes on that step's line. Leave '' until the lesson is recorded.
+const VIDEO_IDS = {
+  1: '',
+  2: '',
+  3: '',
+  4: '',
+  5: '',
+  6: '',
+  7: '',
+  8: '',
+  9: '',
+  10: '',
+  11: '',
+  12: '',
+};
+
 const pad = (n) => String(n).padStart(2, '0');
 
 const STEP_TITLES = [
@@ -26,7 +42,7 @@ window.COURSE_STEPS = STEP_TITLES.map(([title, summary], i) => {
     title,
     summary,
     duration: null, // e.g. '42 min' once recorded
-    videoId: null, // Bunny Stream video GUID
+    videoId: VIDEO_IDS[n] || null,
     thumbnail: `assets/img/lessons/step-${pad(n)}.jpg`, // optional 16:9 still; gradient fallback if missing
     workbook: `workbooks/step-${pad(n)}.pdf`,
     proWorkbook: `pro/step-${pad(n)}-extended.pdf`,

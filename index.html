@@ -37,7 +37,7 @@
   <main>
     <!-- Hero: full-bleed cinematic. Add assets/img/tim-hero.jpg (landscape, Tim on right) and it shows automatically. -->
     <section class="relative min-h-[100svh] flex items-end md:items-center overflow-hidden">
-      <div class="cinema grain absolute inset-0" style="--img: url('assets/img/tim-hero.jpg');"></div>
+      <div id="hero-image" class="cinema grain absolute inset-0"></div>
       <div class="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent"></div>
       <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40"></div>
 
@@ -101,19 +101,17 @@
     <!-- Instructor -->
     <section id="instructor" class="bg-night-900 border-y border-night-700">
       <div class="max-w-content mx-auto px-5 md:px-8 py-20 md:py-28 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-        <!-- Portrait: add assets/img/tim-portrait.jpg (4:5) -->
-        <div class="relative aspect-[4/5] rounded-lg overflow-hidden cinema grain" style="--img: url('assets/img/tim-portrait.jpg');">
+        <!-- Content comes from SITE.instructor in assets/js/site-config.js -->
+        <div id="instructor-photo" class="relative aspect-[4/5] rounded-lg overflow-hidden cinema grain">
           <div class="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-            <p class="font-display font-extrabold uppercase text-3xl tracking-tight">Tim</p>
-            <p class="text-sm text-mist-300">Course instructor</p>
+            <p id="instructor-name" class="font-display font-extrabold uppercase text-3xl tracking-tight"></p>
+            <p id="instructor-role" class="text-sm text-mist-300"></p>
           </div>
         </div>
         <div>
           <p class="text-xs font-semibold uppercase tracking-eyebrow text-accent">Meet your instructor</p>
-          <h2 class="font-display font-bold text-3xl md:text-5xl tracking-tight mt-3 leading-tight">“Recovery work is a craft. This class gives you the tools to practice it well.”</h2>
-          <!-- TODO: replace with Tim's real bio and credentials -->
-          <p class="mt-8 text-mist-300 leading-relaxed text-lg">Tim has spent years working alongside people in recovery and training the professionals who support them. In this class he distills that experience into a step-by-step framework you can bring straight into your practice.</p>
-          <p class="mt-4 text-mist-400 leading-relaxed">[Credentials, years of experience, and organizations go here.]</p>
+          <h2 id="instructor-quote" class="font-display font-bold text-3xl md:text-5xl tracking-tight mt-3 leading-tight"></h2>
+          <div id="instructor-bio" class="mt-8 space-y-4 text-mist-300 leading-relaxed text-lg"></div>
         </div>
       </div>
     </section>
@@ -320,6 +318,20 @@
     const rail = document.getElementById('lesson-rail');
     document.querySelectorAll('[data-rail]').forEach((btn) => {
       btn.onclick = () => rail.scrollBy({ left: Number(btn.dataset.rail) * rail.clientWidth * 0.8, behavior: 'smooth' });
+    });
+
+    // Instructor section and hero image from site-config.js
+    const tim = SITE.instructor;
+    document.getElementById('instructor-photo').style.setProperty('--img', `url('${tim.photo}')`);
+    document.getElementById('hero-image').style.setProperty('--img', `url('${tim.heroPhoto}')`);
+    document.getElementById('instructor-name').textContent = tim.name;
+    document.getElementById('instructor-role').textContent = tim.role;
+    document.getElementById('instructor-quote').textContent = `“${tim.quote}”`;
+    const bio = document.getElementById('instructor-bio');
+    tim.bio.forEach((text) => {
+      const p = document.createElement('p');
+      p.textContent = text;
+      bio.append(p);
     });
 
     // Plan comparison: [feature, in Course, in Pro]

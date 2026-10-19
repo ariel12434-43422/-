@@ -96,7 +96,7 @@
       document.getElementById('name-input').value = cert.name;
       document.getElementById('cert-course').textContent = SITE.courseName;
       document.getElementById('cert-pro').textContent = session.plan === 'pro' ? '— Certified Practitioner Track.' : '.';
-      document.getElementById('cert-instructor').textContent = SITE.instructor;
+      document.getElementById('cert-instructor').textContent = SITE.instructor.name;
       document.getElementById('cert-id').textContent = cert.id;
       document.getElementById('cert-date').textContent = new Date(cert.issuedAt)
         .toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
