@@ -203,6 +203,23 @@
             <a id="waitlist-link" href="mailto:" class="mt-10 block text-center font-semibold px-6 py-4 rounded border border-night-500 hover:border-mist transition">Join the Waitlist</a>
           </div>
         </div>
+        <!-- Plan comparison -->
+        <div class="mt-20 max-w-4xl mx-auto">
+          <h3 class="font-display font-bold text-2xl md:text-3xl tracking-tight text-center">Compare plans</h3>
+          <div class="mt-8 overflow-x-auto">
+            <table class="w-full min-w-[32rem] text-sm">
+              <thead>
+                <tr class="border-b border-night-600">
+                  <th class="text-left font-normal text-mist-500 py-4 pr-4"></th>
+                  <th class="font-display font-bold py-4 px-4 w-36">Course<span class="block text-xs font-sans font-normal text-mist-500 mt-1">$99</span></th>
+                  <th class="font-display font-bold py-4 px-4 w-36 text-accent">Pro<span class="block text-xs font-sans font-normal text-mist-500 mt-1">$199</span></th>
+                </tr>
+              </thead>
+              <tbody id="compare-rows" class="divide-y divide-night-700"></tbody>
+            </table>
+          </div>
+        </div>
+
         <p class="mt-12 text-center text-xs text-mist-500">Prices in USD. Applicable taxes calculated at checkout.</p>
       </div>
     </section>
@@ -248,13 +265,39 @@
   </main>
 
   <footer class="border-t border-night-700">
-    <div class="max-w-content mx-auto px-5 md:px-8 py-10 flex flex-col sm:flex-row justify-between gap-4 text-sm text-mist-500">
-      <p>© <span id="year"></span> Twelve Steps Pro. All rights reserved.</p>
-      <div class="flex gap-6">
-        <a href="#" class="hover:text-mist">Terms</a>
-        <a href="#" class="hover:text-mist">Privacy</a>
-        <a id="support-link" href="#" class="hover:text-mist">Contact</a>
+    <div class="max-w-content mx-auto px-5 md:px-8 py-16 grid grid-cols-2 md:grid-cols-4 gap-10 text-sm">
+      <div class="col-span-2 md:col-span-1">
+        <a href="#" class="font-display font-extrabold text-lg tracking-tight uppercase">Twelve<span class="text-accent">Steps</span> Pro</a>
+        <p class="mt-3 text-mist-500 leading-relaxed max-w-xs">Professional training in the Twelve Steps, taught by Tim.</p>
       </div>
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-eyebrow text-mist-500">Class</p>
+        <ul class="mt-4 space-y-3 text-mist-300">
+          <li><a href="#lessons" class="hover:text-mist">Lessons</a></li>
+          <li><a href="#instructor" class="hover:text-mist">Instructor</a></li>
+          <li><a href="#pricing" class="hover:text-mist">Pricing</a></li>
+          <li><a href="#faq" class="hover:text-mist">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-eyebrow text-mist-500">Account</p>
+        <ul class="mt-4 space-y-3 text-mist-300">
+          <li><a href="login.html" class="hover:text-mist">Log In</a></li>
+          <li><a href="#pricing" class="hover:text-mist">Enroll</a></li>
+          <li><a href="dashboard.html" class="hover:text-mist">My Class</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-eyebrow text-mist-500">Support</p>
+        <ul class="mt-4 space-y-3 text-mist-300">
+          <li><a id="support-link" href="#" class="hover:text-mist">Contact</a></li>
+          <li><a href="#" class="hover:text-mist">Terms of Service</a></li>
+          <li><a href="#" class="hover:text-mist">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-night-700">
+      <p class="max-w-content mx-auto px-5 md:px-8 py-6 text-xs text-mist-500">© <span id="year"></span> Twelve Steps Pro. All rights reserved.</p>
     </div>
   </footer>
 
@@ -278,6 +321,25 @@
     document.querySelectorAll('[data-rail]').forEach((btn) => {
       btn.onclick = () => rail.scrollBy({ left: Number(btn.dataset.rail) * rail.clientWidth * 0.8, behavior: 'smooth' });
     });
+
+    // Plan comparison: [feature, in Course, in Pro]
+    const yes = '<span class="text-accent text-base" aria-label="Included">✓</span>';
+    const no = '<span class="text-mist-500" aria-label="Not included">—</span>';
+    document.getElementById('compare-rows').innerHTML = [
+      ['12 video lessons with Tim', true, true],
+      ['12 step workbooks (PDF)', true, true],
+      ['Progress tracking', true, true],
+      ['Certificate of completion', true, true],
+      ['Lifetime access & updates', true, true],
+      ['Extended workbooks with case studies', false, true],
+      ['12 professional slide decks', false, true],
+      ['Certified Practitioner designation', false, true],
+    ].map(([label, course, pro]) => `
+      <tr>
+        <td class="py-4 pr-4 text-mist-300">${label}</td>
+        <td class="py-4 px-4 text-center">${course ? yes : no}</td>
+        <td class="py-4 px-4 text-center">${pro ? yes : no}</td>
+      </tr>`).join('');
 
     // Solid nav once the hero scrolls away
     const nav = document.getElementById('nav');
