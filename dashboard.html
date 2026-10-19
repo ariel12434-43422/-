@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>My Course — Twelve Steps Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script src="assets/js/tailwind-theme.js"></script>
+  <script src="assets/js/site-config.js"></script>
+  <script src="assets/js/course-data.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script>Auth.requireSession();</script>
+</head>
+<body class="bg-cream text-ink font-sans antialiased">
+
+  <header class="sticky top-0 z-40 bg-cream/90 backdrop-blur border-b border-cream-200">
+    <div class="max-w-[90rem] mx-auto px-5 h-16 flex items-center justify-between gap-6">
+      <a href="index.html" class="font-serif text-lg font-semibold tracking-tight shrink-0">Twelve Steps <span class="text-sage">Pro</span></a>
+      <div class="hidden sm:flex items-center gap-4 flex-1 max-w-md">
+        <div class="h-2 flex-1 rounded-full bg-cream-200 overflow-hidden">
+          <div id="progress-bar" class="h-full bg-sage rounded-full transition-all duration-500" style="width:0%"></div>
+        </div>
+        <span id="progress-label" class="text-sm text-ink-600 tabular-nums whitespace-nowrap">0 / 12</span>
+      </div>
+      <div class="flex items-center gap-4 text-sm">
+        <span id="plan-badge" class="hidden md:inline text-xs font-medium px-2.5 py-1 rounded-full"></span>
+        <span id="user-email" class="hidden lg:inline text-ink-400"></span>
+        <button id="sign-out" class="text-ink-600 hover:text-ink">Sign out</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="max-w-[90rem] mx-auto px-5 py-8 lg:grid lg:grid-cols-[20rem_1fr] lg:gap-10">
+
+    <!-- Step list -->
+    <aside class="mb-8 lg:mb-0">
+      <details id="step-nav-wrap" class="group" open>
+        <summary class="lg:hidden list-none cursor-pointer flex justify-between items-center rounded-2xl bg-white border border-cream-200 px-5 py-4 font-medium">
+          All lessons <span class="text-ink-400 group-open:rotate-180 transition">⌄</span>
+        </summary>
+        <nav class="mt-3 lg:mt-0 lg:sticky lg:top-24">
+          <p class="hidden lg:block text-xs font-medium uppercase tracking-[0.18em] text-ink-400 mb-4 px-3">Lessons</p>
+          <ol id="step-nav" class="space-y-1"></ol>
+        </nav>
+      </details>
+    </aside>
+
+    <!-- Lesson -->
+    <main>
+      <div id="player" class="aspect-video w-full rounded-2xl overflow-hidden bg-ink"></div>
+
+      <div class="mt-8 flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+        <div>
+          <p id="lesson-kicker" class="text-xs font-medium text-sage tracking-widest"></p>
+          <h1 id="lesson-title" class="font-serif text-3xl md:text-4xl tracking-tight mt-2"></h1>
+          <p id="lesson-summary" class="mt-3 text-ink-600 leading-relaxed max-w-2xl"></p>
+        </div>
+        <div class="flex gap-3 shrink-0">
+          <button id="toggle-complete" class="px-5 py-3 rounded-full font-medium transition"></button>
+          <button id="next-lesson" class="px-5 py-3 rounded-full font-medium border border-ink/15 hover:border-ink/40 transition">Next →</button>
+        </div>
+      </div>
+
+      <!-- Resources -->
+      <section class="mt-10 grid md:grid-cols-3 gap-4">
+        <a id="workbook-link" download class="group rounded-2xl bg-white border border-cream-200 p-6 hover:border-sage transition">
+          <p class="text-xs font-medium uppercase tracking-[0.18em] text-ink-400">Workbook</p>
+          <p class="mt-2 font-medium">Step workbook (PDF)</p>
+          <p class="mt-1 text-sm text-ink-600">Exercises and prompts for this step.</p>
+          <p class="mt-4 text-sm text-sage group-hover:underline underline-offset-4">Download ↓</p>
+        </a>
+        <div id="pro-resources" class="md:col-span-2 grid sm:grid-cols-2 gap-4"></div>
+      </section>
+
+      <!-- Certificate + community -->
+      <section class="mt-10 grid md:grid-cols-2 gap-4">
+        <div id="certificate-card" class="rounded-2xl p-6 border"></div>
+        <div class="rounded-2xl border border-dashed border-ink/20 p-6">
+          <p class="text-xs font-medium uppercase tracking-[0.18em] text-ink-400">Coming soon</p>
+          <p class="mt-2 font-medium">Community & monthly live sessions</p>
+          <p class="mt-1 text-sm text-ink-600">Live Q&A and case consultations with Tim. We'll let you know when doors open.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const session = Auth.getSession();
+    const isPro = session?.plan === 'pro';
+    const pad = (n) => String(n).padStart(2, '0');
+    let current = Number(new URLSearchParams(location.search).get('step')) || null;
+
+    document.getElementById('user-email').textContent = session?.email ?? '';
+    const badge = document.getElementById('plan-badge');
+    badge.textContent = isPro ? 'Pro Bundle' : 'Course';
+    badge.className += isPro ? ' bg-clay-100 text-clay' : ' bg-sage-100 text-sage';
+    document.getElementById('sign-out').onclick = () => { Auth.signOut(); location.href = 'index.html'; };
+
+    function firstIncomplete(done) {
+      return COURSE_STEPS.find((s) => !done.has(s.id))?.id ?? 1;
+    }
+
+    function renderNav(done) {
+      document.getElementById('step-nav').innerHTML = COURSE_STEPS.map((s) => {
+        const active = s.id === current;
+        const complete = done.has(s.id);
+        return `
+          <li>
+            <a href="?step=${s.id}" data-step="${s.id}"
+               class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition ${active ? 'bg-white border border-cream-200 shadow-sm' : 'hover:bg-cream-100'}">
+              <span class="h-7 w-7 shrink-0 rounded-full flex items-center justify-center text-xs font-medium
+                ${complete ? 'bg-sage text-cream' : active ? 'bg-ink text-cream' : 'bg-cream-200 text-ink-600'}">
+                ${complete ? '✓' : pad(s.id)}
+              </span>
+              <span class="${active ? 'font-medium' : 'text-ink-600'}">${s.title}</span>
+              ${s.videoId ? '' : '<span class="ml-auto text-[10px] uppercase tracking-wider text-ink-400">Soon</span>'}
+            </a>
+          </li>`;
+      }).join('');
+    }
+
+    function renderPlayer(step) {
+      const el = document.getElementById('player');
+      if (step.videoId && SITE.video.libraryId) {
+        // Production: the token + expires params must come from a server function
+        // (Bunny token authentication) so the embed can't be shared.
+        el.innerHTML = `<iframe src="https://iframe.mediadelivery.net/embed/${SITE.video.libraryId}/${step.videoId}?autoplay=false&preload=true"
+          class="w-full h-full" loading="lazy" allow="accelerometer; gyroscope; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+      } else {
+        el.innerHTML = `
+          <div class="h-full w-full flex flex-col items-center justify-center text-center p-8 bg-gradient-to-br from-ink to-ink-600">
+            <p class="text-xs font-medium uppercase tracking-[0.2em] text-clay">Step ${pad(step.id)}</p>
+            <p class="font-serif text-2xl md:text-3xl text-cream mt-3">${step.title}</p>
+            <p class="mt-4 text-sm text-cream/60">This lesson is being recorded. It will appear here automatically once published.</p>
+          </div>`;
+      }
+    }
+
+    function resourceCard({ label, title, desc, href, locked }) {
+      if (locked) {
+        const upgrade = SITE.checkout.upgradeToPro || 'index.html#pricing';
+        return `
+          <a href="${upgrade}" class="rounded-2xl bg-cream-100 border border-cream-200 p-6 hover:border-clay transition">
+            <p class="text-xs font-medium uppercase tracking-[0.18em] text-clay">Pro Bundle · Locked</p>
+            <p class="mt-2 font-medium">${title}</p>
+            <p class="mt-1 text-sm text-ink-600">${desc}</p>
+            <p class="mt-4 text-sm text-clay">Upgrade to unlock →</p>
+          </a>`;
+      }
+      return `
+        <a href="${href}" download class="group rounded-2xl bg-white border border-cream-200 p-6 hover:border-clay transition">
+          <p class="text-xs font-medium uppercase tracking-[0.18em] text-clay">${label}</p>
+          <p class="mt-2 font-medium">${title}</p>
+          <p class="mt-1 text-sm text-ink-600">${desc}</p>
+          <p class="mt-4 text-sm text-clay group-hover:underline underline-offset-4">Download ↓</p>
+        </a>`;
+    }
+
+    function renderCertificate(done) {
+      const card = document.getElementById('certificate-card');
+      const total = COURSE_STEPS.length;
+      if (done.size === total) {
+        card.className = 'rounded-2xl p-6 border bg-sage text-cream border-sage';
+        card.innerHTML = `
+          <p class="text-xs font-medium uppercase tracking-[0.18em] text-cream/70">Certificate</p>
+          <p class="mt-2 font-serif text-2xl">You've completed all twelve steps.</p>
+          <a href="certificate.html" class="mt-5 inline-block bg-cream text-ink px-5 py-2.5 rounded-full text-sm font-medium hover:bg-white transition">View your certificate</a>`;
+      } else {
+        card.className = 'rounded-2xl p-6 border bg-white border-cream-200';
+        card.innerHTML = `
+          <p class="text-xs font-medium uppercase tracking-[0.18em] text-ink-400">Certificate</p>
+          <p class="mt-2 font-medium">Certificate of completion</p>
+          <p class="mt-1 text-sm text-ink-600">Complete ${total - done.size} more lesson${total - done.size === 1 ? '' : 's'} to unlock your certificate.</p>`;
+      }
+    }
+
+    function render() {
+      const done = Progress.completed();
+      if (!current) current = firstIncomplete(done);
+      const step = COURSE_STEPS.find((s) => s.id === current) ?? COURSE_STEPS[0];
+      const pct = Math.round((done.size / COURSE_STEPS.length) * 100);
+
+      document.getElementById('progress-bar').style.width = `${pct}%`;
+      document.getElementById('progress-label').textContent = `${done.size} / ${COURSE_STEPS.length}`;
+      document.getElementById('lesson-kicker').textContent = `STEP ${pad(step.id)} OF ${COURSE_STEPS.length}${step.duration ? ' · ' + step.duration : ''}`;
+      document.getElementById('lesson-title').textContent = step.title;
+      document.getElementById('lesson-summary').textContent = step.summary;
+      document.getElementById('workbook-link').href = step.workbook;
+
+      const btn = document.getElementById('toggle-complete');
+      const isDone = done.has(step.id);
+      btn.textContent = isDone ? '✓ Completed' : 'Mark as complete';
+      btn.className = `px-5 py-3 rounded-full font-medium transition ${isDone ? 'bg-sage-100 text-sage' : 'bg-sage text-cream hover:bg-sage-600'}`;
+
+      document.getElementById('next-lesson').classList.toggle('invisible', step.id === COURSE_STEPS.length);
+
+      document.getElementById('pro-resources').innerHTML =
+        resourceCard({ label: 'Pro', title: 'Extended workbook', desc: 'Case studies and clinical notes.', href: step.proWorkbook, locked: !isPro }) +
+        resourceCard({ label: 'Pro', title: 'Slide deck', desc: 'Ready-to-present slides for groups.', href: step.proSlides, locked: !isPro });
+
+      renderNav(done);
+      renderPlayer(step);
+      renderCertificate(done);
+    }
+
+    function go(stepId) {
+      current = stepId;
+      history.pushState({}, '', `?step=${stepId}`);
+      render();
+      document.getElementById('step-nav-wrap').open = window.innerWidth >= 1024;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.getElementById('step-nav').addEventListener('click', (e) => {
+      const link = e.target.closest('[data-step]');
+      if (!link) return;
+      e.preventDefault();
+      go(Number(link.dataset.step));
+    });
+
+    document.getElementById('toggle-complete').onclick = () => {
+      Progress.completed().has(current) ? Progress.markIncomplete(current) : Progress.markComplete(current);
+      render();
+    };
+    document.getElementById('next-lesson').onclick = () => go(Math.min(current + 1, COURSE_STEPS.length));
+    window.addEventListener('popstate', () => {
+      current = Number(new URLSearchParams(location.search).get('step')) || null;
+      render();
+    });
+
+    if (window.innerWidth < 1024) document.getElementById('step-nav-wrap').open = false;
+    render();
+  </script>
+</body>
+</html>
