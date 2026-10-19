@@ -3,257 +3,287 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>The Twelve Steps for Professionals — A video course with Tim</title>
-  <meta name="description" content="A 12-part professional video course on applying the Twelve Steps in clinical and coaching practice. Workbooks, certificate of completion, and a Pro bundle for practitioners." />
+  <title>Tim Teaches the Twelve Steps for Professionals</title>
+  <meta name="description" content="A 12-lesson professional video class on applying the Twelve Steps in clinical and coaching practice. Workbooks, certificate of completion, and a Pro bundle for practitioners." />
+  <meta name="theme-color" content="#000000" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/site.css" />
   <script src="https://cdn.tailwindcss.com/3.4.16"></script>
   <script src="assets/js/tailwind-theme.js"></script>
   <script src="assets/js/site-config.js"></script>
   <script src="assets/js/course-data.js"></script>
 </head>
-<body class="bg-cream text-ink font-sans antialiased">
+<body class="bg-night text-mist font-sans antialiased">
 
   <!-- Nav -->
-  <header class="sticky top-0 z-40 bg-cream/90 backdrop-blur border-b border-cream-200">
-    <nav class="max-w-content mx-auto px-5 h-16 flex items-center justify-between">
-      <a href="#" class="font-serif text-lg font-semibold tracking-tight">Twelve Steps <span class="text-sage">Pro</span></a>
-      <div class="hidden md:flex items-center gap-8 text-sm text-ink-600">
-        <a href="#curriculum" class="hover:text-ink">Curriculum</a>
-        <a href="#instructor" class="hover:text-ink">Instructor</a>
-        <a href="#pricing" class="hover:text-ink">Pricing</a>
-        <a href="#faq" class="hover:text-ink">FAQ</a>
+  <header id="nav" class="fixed inset-x-0 top-0 z-50 transition-colors duration-300">
+    <nav class="max-w-content mx-auto px-5 md:px-8 h-16 md:h-20 flex items-center justify-between">
+      <a href="#" class="font-display font-extrabold text-lg md:text-xl tracking-tight uppercase">Twelve<span class="text-accent">Steps</span> Pro</a>
+      <div class="hidden md:flex items-center gap-8 text-sm text-mist-300">
+        <a href="#lessons" class="hover:text-mist">Lessons</a>
+        <a href="#instructor" class="hover:text-mist">Instructor</a>
+        <a href="#pricing" class="hover:text-mist">Pricing</a>
+        <a href="#faq" class="hover:text-mist">FAQ</a>
       </div>
-      <div class="flex items-center gap-3">
-        <a href="login.html" class="text-sm text-ink-600 hover:text-ink">Sign in</a>
-        <a href="#pricing" class="text-sm font-medium bg-ink text-cream px-4 py-2 rounded-full hover:bg-ink-600 transition">Enroll</a>
+      <div class="flex items-center gap-4 md:gap-6">
+        <a href="login.html" class="text-sm font-semibold text-mist-300 hover:text-mist">Log In</a>
+        <a href="#pricing" class="text-sm font-semibold bg-accent hover:bg-accent-600 text-white px-5 py-2.5 rounded transition">Enroll</a>
       </div>
     </nav>
   </header>
 
   <main>
-    <!-- Hero -->
-    <section class="max-w-content mx-auto px-5 pt-20 pb-24 md:pt-28 md:pb-32 grid md:grid-cols-12 gap-12 items-center">
-      <div class="md:col-span-7">
-        <p class="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.18em] text-sage mb-6">
-          <span class="h-px w-8 bg-sage"></span> Professional video course
-        </p>
-        <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.05] tracking-tight">
-          Guide clients through the Twelve Steps with clarity and confidence.
-        </h1>
-        <p class="mt-6 text-lg text-ink-600 max-w-xl leading-relaxed">
-          Twelve focused lessons with Tim — one for every step — built for therapists, counselors, and recovery coaches who want a structured, practical framework they can use in session.
-        </p>
-        <div class="mt-10 flex flex-wrap items-center gap-4">
-          <a href="#pricing" class="bg-sage text-cream px-6 py-3.5 rounded-full font-medium hover:bg-sage-600 transition">Enroll for $99</a>
-          <a href="#curriculum" class="px-6 py-3.5 rounded-full font-medium border border-ink/15 hover:border-ink/40 transition">See the curriculum</a>
-        </div>
-        <dl class="mt-12 grid grid-cols-3 max-w-md gap-6 text-sm">
-          <div><dt class="text-ink-400">Lessons</dt><dd class="font-serif text-2xl mt-1">12</dd></div>
-          <div><dt class="text-ink-400">Workbooks</dt><dd class="font-serif text-2xl mt-1">12</dd></div>
-          <div><dt class="text-ink-400">Certificate</dt><dd class="font-serif text-2xl mt-1">Included</dd></div>
-        </dl>
-      </div>
-      <div class="md:col-span-5">
-        <!-- Replace with a still of Tim or a trailer embed once recorded -->
-        <div class="aspect-[4/5] rounded-3xl bg-gradient-to-br from-sage-100 via-cream-100 to-clay-100 border border-cream-200 relative overflow-hidden">
-          <div class="absolute inset-0 flex flex-col justify-end p-8">
-            <p class="font-serif text-2xl leading-snug">“Recovery work is a craft. This course gives you the tools to practice it well.”</p>
-            <p class="mt-4 text-sm text-ink-600">— Tim, course instructor</p>
+    <!-- Hero: full-bleed cinematic. Add assets/img/tim-hero.jpg (landscape, Tim on right) and it shows automatically. -->
+    <section class="relative min-h-[100svh] flex items-end md:items-center overflow-hidden">
+      <div class="cinema grain absolute inset-0" style="--img: url('assets/img/tim-hero.jpg');"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40"></div>
+
+      <div class="relative max-w-content w-full mx-auto px-5 md:px-8 pt-32 pb-16 md:py-32">
+        <div class="max-w-2xl">
+          <p class="text-xs md:text-sm font-semibold uppercase tracking-eyebrow text-mist-300">Tim teaches</p>
+          <h1 class="font-display font-extrabold uppercase text-5xl sm:text-6xl lg:text-7xl leading-[0.95] tracking-tight mt-4">
+            The Twelve Steps<br class="hidden sm:block" /> for Professionals
+          </h1>
+          <p class="mt-6 text-lg md:text-xl text-mist-300 leading-relaxed max-w-xl">
+            Guide clients through every step of recovery with clarity and confidence. Twelve lessons built for therapists, counselors, and recovery coaches.
+          </p>
+          <div class="mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <a href="#pricing" class="text-center bg-accent hover:bg-accent-600 text-white font-semibold px-8 py-4 rounded transition">Enroll Now · $99</a>
+            <a href="#trailer" class="inline-flex items-center justify-center gap-3 font-semibold px-8 py-4 rounded bg-white/10 hover:bg-white/20 backdrop-blur transition">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>
+              Watch Trailer
+            </a>
           </div>
+          <ul class="mt-12 flex flex-wrap gap-x-6 gap-y-2 text-sm text-mist-400">
+            <li><span class="text-mist font-semibold">12</span> video lessons</li>
+            <li class="text-mist-500">|</li>
+            <li><span class="text-mist font-semibold">12</span> workbooks</li>
+            <li class="text-mist-500">|</li>
+            <li>Certificate of completion</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- Who it's for -->
-    <section class="border-y border-cream-200 bg-cream-100">
-      <div class="max-w-content mx-auto px-5 py-20 grid md:grid-cols-3 gap-10">
+    <!-- Lesson rail -->
+    <section id="lessons" class="py-20 md:py-28">
+      <div class="max-w-content mx-auto px-5 md:px-8 flex items-end justify-between gap-6">
         <div>
-          <h3 class="font-serif text-xl">Clinicians & therapists</h3>
-          <p class="mt-3 text-ink-600 leading-relaxed">Integrate step-based work alongside your existing modality without losing clinical rigor.</p>
+          <p class="text-xs font-semibold uppercase tracking-eyebrow text-accent">Lesson plan</p>
+          <h2 class="font-display font-bold text-3xl md:text-5xl tracking-tight mt-3">12 lessons. One clear path.</h2>
         </div>
-        <div>
-          <h3 class="font-serif text-xl">Counselors & coaches</h3>
-          <p class="mt-3 text-ink-600 leading-relaxed">A shared language and session-ready exercises for every stage of a client's journey.</p>
-        </div>
-        <div>
-          <h3 class="font-serif text-xl">Program leaders</h3>
-          <p class="mt-3 text-ink-600 leading-relaxed">Train your team on a consistent framework, with workbooks and slides you can reuse.</p>
+        <div class="hidden md:flex gap-2">
+          <button data-rail="-1" aria-label="Previous lessons" class="h-11 w-11 rounded-full border border-night-500 hover:border-mist flex items-center justify-center transition">←</button>
+          <button data-rail="1" aria-label="Next lessons" class="h-11 w-11 rounded-full border border-night-500 hover:border-mist flex items-center justify-center transition">→</button>
         </div>
       </div>
+      <ol id="lesson-rail" class="rail mt-10 flex gap-4 md:gap-5 overflow-x-auto px-5 md:px-[max(2rem,calc((100vw-80rem)/2+2rem))] pb-2"></ol>
     </section>
 
-    <!-- Curriculum -->
-    <section id="curriculum" class="max-w-content mx-auto px-5 py-24">
-      <div class="max-w-2xl">
-        <p class="text-xs font-medium uppercase tracking-[0.18em] text-sage">Curriculum</p>
-        <h2 class="font-serif text-3xl md:text-4xl mt-3 tracking-tight">Twelve lessons. One clear path.</h2>
-        <p class="mt-4 text-ink-600 leading-relaxed">Each lesson pairs a recorded session with Tim and a downloadable workbook of exercises, prompts, and case examples.</p>
+    <!-- Trailer -->
+    <section id="trailer" class="max-w-content mx-auto px-5 md:px-8 pb-20 md:pb-28">
+      <!-- Replace inner div with the Bunny Stream trailer iframe once recorded -->
+      <div class="relative aspect-video rounded-lg overflow-hidden cinema grain group cursor-pointer">
+        <div class="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition"></div>
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+          <span class="h-20 w-20 rounded-full bg-white/15 backdrop-blur flex items-center justify-center group-hover:scale-105 transition">
+            <svg class="h-7 w-7 ml-1" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>
+          </span>
+          <p class="mt-5 font-display font-bold uppercase tracking-eyebrow text-sm">Class Trailer</p>
+          <p class="mt-1 text-sm text-mist-400">Coming soon</p>
+        </div>
       </div>
-      <ol id="curriculum-list" class="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-cream-200 border border-cream-200 rounded-2xl overflow-hidden"></ol>
     </section>
 
     <!-- Instructor -->
-    <section id="instructor" class="bg-ink text-cream">
-      <div class="max-w-content mx-auto px-5 py-24 grid md:grid-cols-12 gap-12 items-center">
-        <div class="md:col-span-5">
-          <!-- Replace with Tim's portrait: <img src="assets/img/tim.jpg" alt="Tim" class="..."> -->
-          <div class="aspect-square rounded-3xl bg-ink-600/60 border border-white/10 flex items-center justify-center text-cream/40 text-sm">Instructor photo</div>
+    <section id="instructor" class="bg-night-900 border-y border-night-700">
+      <div class="max-w-content mx-auto px-5 md:px-8 py-20 md:py-28 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+        <!-- Portrait: add assets/img/tim-portrait.jpg (4:5) -->
+        <div class="relative aspect-[4/5] rounded-lg overflow-hidden cinema grain" style="--img: url('assets/img/tim-portrait.jpg');">
+          <div class="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+            <p class="font-display font-extrabold uppercase text-3xl tracking-tight">Tim</p>
+            <p class="text-sm text-mist-300">Course instructor</p>
+          </div>
         </div>
-        <div class="md:col-span-7">
-          <p class="text-xs font-medium uppercase tracking-[0.18em] text-clay">Your instructor</p>
-          <h2 class="font-serif text-3xl md:text-4xl mt-3 tracking-tight">Meet Tim</h2>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-eyebrow text-accent">Meet your instructor</p>
+          <h2 class="font-display font-bold text-3xl md:text-5xl tracking-tight mt-3 leading-tight">“Recovery work is a craft. This class gives you the tools to practice it well.”</h2>
           <!-- TODO: replace with Tim's real bio and credentials -->
-          <p class="mt-6 text-cream/75 leading-relaxed text-lg">Tim has spent years working alongside people in recovery and training the professionals who support them. In this course he distills that experience into a step-by-step framework you can bring straight into your practice.</p>
-          <p class="mt-4 text-cream/75 leading-relaxed">[Credentials, years of experience, and organizations go here.]</p>
+          <p class="mt-8 text-mist-300 leading-relaxed text-lg">Tim has spent years working alongside people in recovery and training the professionals who support them. In this class he distills that experience into a step-by-step framework you can bring straight into your practice.</p>
+          <p class="mt-4 text-mist-400 leading-relaxed">[Credentials, years of experience, and organizations go here.]</p>
         </div>
       </div>
     </section>
 
-    <!-- What's included -->
-    <section class="max-w-content mx-auto px-5 py-24">
-      <div class="max-w-2xl">
-        <p class="text-xs font-medium uppercase tracking-[0.18em] text-sage">What's included</p>
-        <h2 class="font-serif text-3xl md:text-4xl mt-3 tracking-tight">Everything you need to put it into practice</h2>
-      </div>
-      <div class="mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="rounded-2xl bg-white border border-cream-200 p-7">
-          <div class="h-10 w-10 rounded-full bg-sage-100 text-sage flex items-center justify-center font-serif">▶</div>
-          <h3 class="mt-5 font-medium">12 video lessons</h3>
-          <p class="mt-2 text-sm text-ink-600 leading-relaxed">Stream on any device, at your own pace, with lifetime access.</p>
+    <!-- Who it's for + what's included -->
+    <section class="max-w-content mx-auto px-5 md:px-8 py-20 md:py-28">
+      <div class="grid lg:grid-cols-3 gap-12">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-eyebrow text-accent">Built for practitioners</p>
+          <h2 class="font-display font-bold text-3xl md:text-4xl tracking-tight mt-3">Everything you need to put it into practice.</h2>
+          <p class="mt-5 text-mist-400 leading-relaxed">For therapists, counselors, social workers, recovery coaches, and program leaders.</p>
         </div>
-        <div class="rounded-2xl bg-white border border-cream-200 p-7">
-          <div class="h-10 w-10 rounded-full bg-sage-100 text-sage flex items-center justify-center font-serif">✎</div>
-          <h3 class="mt-5 font-medium">Step workbooks</h3>
-          <p class="mt-2 text-sm text-ink-600 leading-relaxed">A printable PDF for every step, with exercises you can use with clients.</p>
-        </div>
-        <div class="rounded-2xl bg-white border border-cream-200 p-7">
-          <div class="h-10 w-10 rounded-full bg-sage-100 text-sage flex items-center justify-center font-serif">✓</div>
-          <h3 class="mt-5 font-medium">Progress tracking</h3>
-          <p class="mt-2 text-sm text-ink-600 leading-relaxed">Pick up where you left off and see exactly what's next.</p>
-        </div>
-        <div class="rounded-2xl bg-white border border-cream-200 p-7">
-          <div class="h-10 w-10 rounded-full bg-clay-100 text-clay flex items-center justify-center font-serif">★</div>
-          <h3 class="mt-5 font-medium">Certificate of completion</h3>
-          <p class="mt-2 text-sm text-ink-600 leading-relaxed">Issued automatically when you finish all twelve lessons.</p>
+        <div class="lg:col-span-2 grid sm:grid-cols-2 gap-px bg-night-700 rounded-lg overflow-hidden border border-night-700">
+          <div class="bg-night p-8">
+            <p class="font-display font-extrabold text-4xl text-accent">12</p>
+            <h3 class="mt-4 font-semibold text-lg">Video lessons</h3>
+            <p class="mt-2 text-sm text-mist-400 leading-relaxed">Stream on any device, at your own pace, with lifetime access.</p>
+          </div>
+          <div class="bg-night p-8">
+            <p class="font-display font-extrabold text-4xl text-accent">PDF</p>
+            <h3 class="mt-4 font-semibold text-lg">Step workbooks</h3>
+            <p class="mt-2 text-sm text-mist-400 leading-relaxed">Exercises, prompts and case examples you can use with clients.</p>
+          </div>
+          <div class="bg-night p-8">
+            <p class="font-display font-extrabold text-4xl text-accent">%</p>
+            <h3 class="mt-4 font-semibold text-lg">Progress tracking</h3>
+            <p class="mt-2 text-sm text-mist-400 leading-relaxed">Pick up where you left off and see exactly what's next.</p>
+          </div>
+          <div class="bg-night p-8">
+            <p class="font-display font-extrabold text-4xl text-accent">★</p>
+            <h3 class="mt-4 font-semibold text-lg">Certificate</h3>
+            <p class="mt-2 text-sm text-mist-400 leading-relaxed">Issued automatically when you complete all twelve lessons.</p>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Pricing -->
-    <section id="pricing" class="bg-cream-100 border-y border-cream-200">
-      <div class="max-w-content mx-auto px-5 py-24">
+    <section id="pricing" class="bg-night-900 border-y border-night-700">
+      <div class="max-w-content mx-auto px-5 md:px-8 py-20 md:py-28">
         <div class="text-center max-w-2xl mx-auto">
-          <p class="text-xs font-medium uppercase tracking-[0.18em] text-sage">Pricing</p>
-          <h2 class="font-serif text-3xl md:text-4xl mt-3 tracking-tight">Choose your path</h2>
-          <p class="mt-4 text-ink-600">One-time payment. Lifetime access. Secure checkout.</p>
+          <p class="text-xs font-semibold uppercase tracking-eyebrow text-accent">Pricing</p>
+          <h2 class="font-display font-bold text-3xl md:text-5xl tracking-tight mt-3">Choose your plan</h2>
+          <p class="mt-4 text-mist-400">One-time payment. Lifetime access. Secure checkout.</p>
         </div>
 
-        <div class="mt-14 grid lg:grid-cols-3 gap-6 items-stretch">
+        <div class="mt-14 grid lg:grid-cols-3 gap-5 items-stretch max-w-6xl mx-auto">
           <!-- Course -->
-          <div class="rounded-3xl bg-white border border-cream-200 p-8 flex flex-col">
-            <h3 class="font-medium">The Course</h3>
-            <p class="mt-1 text-sm text-ink-400">For individual practitioners</p>
-            <p class="mt-6"><span class="font-serif text-5xl">$99</span> <span class="text-ink-400 text-sm">one-time</span></p>
-            <ul class="mt-8 space-y-3 text-sm text-ink-600 flex-1">
-              <li class="flex gap-3"><span class="text-sage">✓</span> 12 video lessons with Tim</li>
-              <li class="flex gap-3"><span class="text-sage">✓</span> 12 step workbooks (PDF)</li>
-              <li class="flex gap-3"><span class="text-sage">✓</span> Progress tracking</li>
-              <li class="flex gap-3"><span class="text-sage">✓</span> Certificate of completion</li>
+          <div class="rounded-lg bg-night-800 border border-night-600 p-8 flex flex-col">
+            <h3 class="font-display font-bold text-xl">The Course</h3>
+            <p class="mt-1 text-sm text-mist-400">For individual practitioners</p>
+            <p class="mt-8 flex items-baseline gap-2"><span class="font-display font-extrabold text-5xl">$99</span><span class="text-mist-500 text-sm">one-time</span></p>
+            <ul class="mt-8 space-y-3.5 text-sm text-mist-300 flex-1">
+              <li class="flex gap-3"><span class="text-accent">✓</span> 12 video lessons with Tim</li>
+              <li class="flex gap-3"><span class="text-accent">✓</span> 12 step workbooks (PDF)</li>
+              <li class="flex gap-3"><span class="text-accent">✓</span> Progress tracking</li>
+              <li class="flex gap-3"><span class="text-accent">✓</span> Certificate of completion</li>
             </ul>
-            <a data-checkout="course" href="#pricing" class="mt-10 block text-center px-6 py-3.5 rounded-full font-medium border border-ink/15 hover:border-ink/40 transition">Enroll in the course</a>
+            <a data-checkout="course" href="#pricing" class="mt-10 block text-center font-semibold px-6 py-4 rounded bg-white/10 hover:bg-white/20 transition">Enroll in the Course</a>
           </div>
 
           <!-- Pro -->
-          <div class="rounded-3xl bg-ink text-cream p-8 flex flex-col relative lg:-my-4 shadow-xl">
-            <span class="absolute -top-3 left-8 bg-clay text-white text-xs font-medium px-3 py-1 rounded-full">Most popular</span>
-            <h3 class="font-medium">Certified Practitioner Bundle</h3>
-            <p class="mt-1 text-sm text-cream/60">For professionals who teach and lead groups</p>
-            <p class="mt-6"><span class="font-serif text-5xl">$199</span> <span class="text-cream/50 text-sm">one-time</span></p>
-            <ul class="mt-8 space-y-3 text-sm text-cream/80 flex-1">
-              <li class="flex gap-3"><span class="text-clay">✓</span> Everything in The Course</li>
-              <li class="flex gap-3"><span class="text-clay">✓</span> Extended workbooks with case studies</li>
-              <li class="flex gap-3"><span class="text-clay">✓</span> 12 professional slide decks for groups & training</li>
-              <li class="flex gap-3"><span class="text-clay">✓</span> Practitioner certificate</li>
+          <div class="rounded-lg bg-night-800 border-2 border-accent p-8 flex flex-col relative lg:-my-4 shadow-[0_0_60px_-15px_rgba(227,25,59,0.45)]">
+            <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-accent text-white text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded">Best value</span>
+            <h3 class="font-display font-bold text-xl">Certified Practitioner</h3>
+            <p class="mt-1 text-sm text-mist-400">For professionals who teach and lead groups</p>
+            <p class="mt-8 flex items-baseline gap-2"><span class="font-display font-extrabold text-5xl">$199</span><span class="text-mist-500 text-sm">one-time</span></p>
+            <ul class="mt-8 space-y-3.5 text-sm text-mist-300 flex-1">
+              <li class="flex gap-3"><span class="text-accent">✓</span> Everything in The Course</li>
+              <li class="flex gap-3"><span class="text-accent">✓</span> Extended workbooks with case studies</li>
+              <li class="flex gap-3"><span class="text-accent">✓</span> 12 professional slide decks</li>
+              <li class="flex gap-3"><span class="text-accent">✓</span> Certified Practitioner certificate</li>
             </ul>
-            <a data-checkout="pro" href="#pricing" class="mt-10 block text-center bg-clay text-white px-6 py-3.5 rounded-full font-medium hover:opacity-90 transition">Get the Pro Bundle</a>
+            <a data-checkout="pro" href="#pricing" class="mt-10 block text-center bg-accent hover:bg-accent-600 text-white font-semibold px-6 py-4 rounded transition">Get the Pro Bundle</a>
           </div>
 
           <!-- Community -->
-          <div class="rounded-3xl bg-white/60 border border-dashed border-ink/20 p-8 flex flex-col">
-            <h3 class="font-medium">Community & Live Sessions</h3>
-            <p class="mt-1 text-sm text-ink-400">Monthly membership</p>
-            <p class="mt-6"><span class="font-serif text-3xl">Coming soon</span></p>
-            <ul class="mt-8 space-y-3 text-sm text-ink-600 flex-1">
-              <li class="flex gap-3"><span class="text-ink-400">○</span> Monthly live Q&A with Tim</li>
-              <li class="flex gap-3"><span class="text-ink-400">○</span> Case consultation calls</li>
-              <li class="flex gap-3"><span class="text-ink-400">○</span> Private practitioner community</li>
+          <div class="rounded-lg border border-dashed border-night-500 p-8 flex flex-col">
+            <h3 class="font-display font-bold text-xl">Community & Live</h3>
+            <p class="mt-1 text-sm text-mist-400">Monthly membership</p>
+            <p class="mt-8 font-display font-extrabold text-3xl uppercase tracking-tight text-mist-300">Coming soon</p>
+            <ul class="mt-8 space-y-3.5 text-sm text-mist-400 flex-1">
+              <li class="flex gap-3"><span>○</span> Monthly live Q&A with Tim</li>
+              <li class="flex gap-3"><span>○</span> Case consultation calls</li>
+              <li class="flex gap-3"><span>○</span> Private practitioner community</li>
             </ul>
-            <a id="waitlist-link" href="mailto:" class="mt-10 block text-center px-6 py-3.5 rounded-full font-medium border border-ink/15 hover:border-ink/40 transition">Join the waitlist</a>
+            <a id="waitlist-link" href="mailto:" class="mt-10 block text-center font-semibold px-6 py-4 rounded border border-night-500 hover:border-mist transition">Join the Waitlist</a>
           </div>
         </div>
-        <p class="mt-10 text-center text-xs text-ink-400">Payments processed securely. Prices in USD; applicable taxes calculated at checkout.</p>
+        <p class="mt-12 text-center text-xs text-mist-500">Prices in USD. Applicable taxes calculated at checkout.</p>
       </div>
     </section>
 
     <!-- FAQ -->
-    <section id="faq" class="max-w-3xl mx-auto px-5 py-24">
-      <h2 class="font-serif text-3xl md:text-4xl tracking-tight text-center">Questions</h2>
-      <div class="mt-12 divide-y divide-cream-200 border-y border-cream-200">
+    <section id="faq" class="max-w-3xl mx-auto px-5 md:px-8 py-20 md:py-28">
+      <h2 class="font-display font-bold text-3xl md:text-5xl tracking-tight text-center">FAQ</h2>
+      <div class="mt-12 divide-y divide-night-700 border-y border-night-700">
         <details class="group py-6">
-          <summary class="flex justify-between items-center cursor-pointer list-none font-medium">How long do I have access?<span class="text-ink-400 group-open:rotate-45 transition">+</span></summary>
-          <p class="mt-4 text-ink-600 leading-relaxed">Lifetime access, including future updates to the lessons and workbooks.</p>
+          <summary class="flex justify-between items-center gap-6 cursor-pointer list-none font-semibold text-lg">How long do I have access?<span class="text-2xl text-mist-400 group-open:rotate-45 transition">+</span></summary>
+          <p class="mt-4 text-mist-400 leading-relaxed">Lifetime access, including future updates to the lessons and workbooks.</p>
         </details>
         <details class="group py-6">
-          <summary class="flex justify-between items-center cursor-pointer list-none font-medium">Who is this course for?<span class="text-ink-400 group-open:rotate-45 transition">+</span></summary>
-          <p class="mt-4 text-ink-600 leading-relaxed">Therapists, counselors, social workers, recovery coaches, and anyone professionally supporting people through step-based recovery.</p>
+          <summary class="flex justify-between items-center gap-6 cursor-pointer list-none font-semibold text-lg">Who is this class for?<span class="text-2xl text-mist-400 group-open:rotate-45 transition">+</span></summary>
+          <p class="mt-4 text-mist-400 leading-relaxed">Therapists, counselors, social workers, recovery coaches, and anyone professionally supporting people through step-based recovery.</p>
         </details>
         <details class="group py-6">
-          <summary class="flex justify-between items-center cursor-pointer list-none font-medium">How does the certificate work?<span class="text-ink-400 group-open:rotate-45 transition">+</span></summary>
-          <p class="mt-4 text-ink-600 leading-relaxed">Once all twelve lessons are marked complete, your certificate is generated automatically in your dashboard, ready to download or print.</p>
+          <summary class="flex justify-between items-center gap-6 cursor-pointer list-none font-semibold text-lg">How does the certificate work?<span class="text-2xl text-mist-400 group-open:rotate-45 transition">+</span></summary>
+          <p class="mt-4 text-mist-400 leading-relaxed">Once all twelve lessons are marked complete, your certificate is generated automatically in your dashboard, ready to download or print.</p>
         </details>
         <details class="group py-6">
-          <summary class="flex justify-between items-center cursor-pointer list-none font-medium">Can I upgrade to the Pro Bundle later?<span class="text-ink-400 group-open:rotate-45 transition">+</span></summary>
-          <p class="mt-4 text-ink-600 leading-relaxed">Yes. You can upgrade from inside your dashboard and pay only the difference.</p>
+          <summary class="flex justify-between items-center gap-6 cursor-pointer list-none font-semibold text-lg">Can I upgrade to the Pro Bundle later?<span class="text-2xl text-mist-400 group-open:rotate-45 transition">+</span></summary>
+          <p class="mt-4 text-mist-400 leading-relaxed">Yes. You can upgrade from inside your dashboard and pay only the difference.</p>
         </details>
         <details class="group py-6">
-          <summary class="flex justify-between items-center cursor-pointer list-none font-medium">What is your refund policy?<span class="text-ink-400 group-open:rotate-45 transition">+</span></summary>
+          <summary class="flex justify-between items-center gap-6 cursor-pointer list-none font-semibold text-lg">What is your refund policy?<span class="text-2xl text-mist-400 group-open:rotate-45 transition">+</span></summary>
           <!-- TODO: confirm refund policy -->
-          <p class="mt-4 text-ink-600 leading-relaxed">[Refund policy to be confirmed, e.g. 14-day money-back guarantee.]</p>
+          <p class="mt-4 text-mist-400 leading-relaxed">[Refund policy to be confirmed, e.g. 14-day money-back guarantee.]</p>
         </details>
       </div>
     </section>
 
     <!-- Final CTA -->
-    <section class="max-w-content mx-auto px-5 pb-24">
-      <div class="rounded-3xl bg-sage text-cream px-8 py-16 md:px-16 text-center">
-        <h2 class="font-serif text-3xl md:text-4xl tracking-tight">Start with Step One today.</h2>
-        <p class="mt-4 text-cream/75 max-w-xl mx-auto">Join practitioners building a more confident, structured approach to recovery work.</p>
-        <a href="#pricing" class="mt-8 inline-block bg-cream text-ink px-7 py-3.5 rounded-full font-medium hover:bg-white transition">Enroll now</a>
+    <section class="relative overflow-hidden">
+      <div class="cinema grain absolute inset-0"></div>
+      <div class="absolute inset-0 bg-black/50"></div>
+      <div class="relative max-w-content mx-auto px-5 md:px-8 py-24 md:py-32 text-center">
+        <h2 class="font-display font-extrabold uppercase text-4xl md:text-6xl tracking-tight">Start with Step One today</h2>
+        <p class="mt-5 text-mist-300 max-w-xl mx-auto text-lg">Join practitioners building a more confident, structured approach to recovery work.</p>
+        <a href="#pricing" class="mt-10 inline-block bg-accent hover:bg-accent-600 text-white font-semibold px-10 py-4 rounded transition">Enroll Now</a>
       </div>
     </section>
   </main>
 
-  <footer class="border-t border-cream-200">
-    <div class="max-w-content mx-auto px-5 py-10 flex flex-col sm:flex-row justify-between gap-4 text-sm text-ink-400">
+  <footer class="border-t border-night-700">
+    <div class="max-w-content mx-auto px-5 md:px-8 py-10 flex flex-col sm:flex-row justify-between gap-4 text-sm text-mist-500">
       <p>© <span id="year"></span> Twelve Steps Pro. All rights reserved.</p>
       <div class="flex gap-6">
-        <a href="#" class="hover:text-ink">Terms</a>
-        <a href="#" class="hover:text-ink">Privacy</a>
-        <a id="support-link" href="#" class="hover:text-ink">Contact</a>
+        <a href="#" class="hover:text-mist">Terms</a>
+        <a href="#" class="hover:text-mist">Privacy</a>
+        <a id="support-link" href="#" class="hover:text-mist">Contact</a>
       </div>
     </div>
   </footer>
 
   <script>
-    // Curriculum grid from shared course data
-    document.getElementById('curriculum-list').innerHTML = COURSE_STEPS.map((s) => `
-      <li class="bg-cream p-7">
-        <p class="text-xs font-medium text-sage tracking-widest">STEP ${String(s.id).padStart(2, '0')}</p>
-        <h3 class="font-serif text-xl mt-2">${s.title}</h3>
-        <p class="mt-2 text-sm text-ink-600 leading-relaxed">${s.summary}</p>
+    const pad = (n) => String(n).padStart(2, '0');
+
+    // Lesson rail from shared course data
+    document.getElementById('lesson-rail').innerHTML = COURSE_STEPS.map((s) => `
+      <li class="w-[78vw] sm:w-[22rem] shrink-0 group">
+        <div class="relative aspect-video rounded-lg overflow-hidden cinema" style="--img: url('${s.thumbnail}');">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+          <span class="absolute top-3 left-4 font-display font-extrabold text-6xl text-white/15 leading-none">${pad(s.id)}</span>
+          <span class="absolute bottom-3 right-3 text-[11px] font-semibold uppercase tracking-wider bg-black/60 px-2 py-1 rounded">${s.duration ?? 'Coming soon'}</span>
+        </div>
+        <p class="mt-4 text-xs font-semibold uppercase tracking-eyebrow text-mist-500">Lesson ${s.id}</p>
+        <h3 class="mt-1 font-display font-bold text-xl">${s.title}</h3>
+        <p class="mt-2 text-sm text-mist-400 leading-relaxed">${s.summary}</p>
       </li>`).join('');
+
+    const rail = document.getElementById('lesson-rail');
+    document.querySelectorAll('[data-rail]').forEach((btn) => {
+      btn.onclick = () => rail.scrollBy({ left: Number(btn.dataset.rail) * rail.clientWidth * 0.8, behavior: 'smooth' });
+    });
+
+    // Solid nav once the hero scrolls away
+    const nav = document.getElementById('nav');
+    const onScroll = () => nav.classList.toggle('bg-black', window.scrollY > 40);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
 
     // Checkout buttons: use Lemon Squeezy URL when configured
     document.querySelectorAll('[data-checkout]').forEach((el) => {

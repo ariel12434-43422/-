@@ -7,7 +7,7 @@
   <title>Certificate of Completion — Twelve Steps Pro</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@600;700;800&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com/3.4.16"></script>
   <script src="assets/js/tailwind-theme.js"></script>
   <script src="assets/js/site-config.js"></script>
@@ -26,48 +26,48 @@
     }
   </style>
 </head>
-<body class="bg-cream-100 text-ink font-sans antialiased min-h-screen">
+<body class="bg-night text-mist font-sans antialiased min-h-screen">
   <div class="no-print max-w-5xl mx-auto px-5 pt-8 flex flex-wrap items-end justify-between gap-4">
-    <a href="dashboard.html" class="text-sm text-ink-600 hover:text-ink">← Back to course</a>
+    <a href="dashboard.html" class="text-sm font-semibold text-mist-400 hover:text-mist">← Back to class</a>
     <form id="name-form" class="flex items-end gap-3">
       <label class="block">
-        <span class="text-xs text-ink-600">Name as it should appear</span>
-        <input id="name-input" required class="mt-1 block rounded-xl border border-cream-200 bg-white px-4 py-2.5 outline-none focus:border-sage" />
+        <span class="text-xs font-semibold uppercase tracking-wider text-mist-400">Name as it should appear</span>
+        <input id="name-input" required class="mt-1 block rounded bg-night-800 border border-night-500 px-4 py-2.5 text-mist outline-none focus:border-mist" />
       </label>
-      <button class="bg-ink text-cream px-5 py-2.5 rounded-full text-sm font-medium">Update</button>
-      <button type="button" onclick="window.print()" class="bg-sage text-cream px-5 py-2.5 rounded-full text-sm font-medium">Download PDF</button>
+      <button class="bg-white/10 hover:bg-white/20 px-5 py-2.5 rounded text-sm font-semibold transition">Update</button>
+      <button type="button" onclick="window.print()" class="bg-accent hover:bg-accent-600 text-white px-5 py-2.5 rounded text-sm font-semibold transition">Download PDF</button>
     </form>
   </div>
 
   <div class="max-w-5xl mx-auto px-5 py-8">
-    <div id="certificate" class="aspect-[297/210] bg-white shadow-xl rounded-sm p-[4%] relative">
-      <div class="h-full w-full border-2 border-sage/70 p-[1.2%]">
-        <div class="h-full w-full border border-sage/30 flex flex-col items-center justify-center text-center px-[8%]">
-          <p class="text-[clamp(0.6rem,1.3vw,0.85rem)] font-medium uppercase tracking-[0.3em] text-sage">Certificate of Completion</p>
-          <p class="mt-[3%] text-[clamp(0.7rem,1.5vw,1rem)] text-ink-600">This certifies that</p>
-          <p id="cert-name" class="font-serif text-[clamp(1.6rem,5vw,3.5rem)] leading-tight mt-[1.5%]"></p>
-          <div class="h-px w-1/3 bg-ink/20 mt-[2%]"></div>
-          <p class="mt-[3%] text-[clamp(0.7rem,1.5vw,1rem)] text-ink-600 max-w-xl">
+    <div id="certificate" class="aspect-[297/210] bg-white text-night shadow-2xl p-[4%] relative">
+      <div class="h-full w-full border-[3px] border-night p-[1.2%]">
+        <div class="h-full w-full border border-night/20 flex flex-col items-center justify-center text-center px-[8%]">
+          <p class="text-[clamp(0.6rem,1.3vw,0.85rem)] font-display font-bold uppercase tracking-[0.3em] text-accent">Certificate of Completion</p>
+          <p class="mt-[3%] text-[clamp(0.7rem,1.5vw,1rem)] text-night-500">This certifies that</p>
+          <p id="cert-name" class="font-serif font-semibold text-[clamp(1.6rem,5vw,3.5rem)] leading-tight mt-[1.5%]"></p>
+          <div class="h-px w-1/3 bg-night/20 mt-[2%]"></div>
+          <p class="mt-[3%] text-[clamp(0.7rem,1.5vw,1rem)] text-night-500 max-w-xl">
             has successfully completed all twelve lessons of
-            <span id="cert-course" class="font-serif italic text-ink"></span>
+            <span id="cert-course" class="font-serif italic text-night"></span>
             <span id="cert-pro"></span>
           </p>
-          <div class="mt-[6%] w-full grid grid-cols-3 items-end text-[clamp(0.55rem,1.1vw,0.8rem)] text-ink-600">
+          <div class="mt-[6%] w-full grid grid-cols-3 items-end text-[clamp(0.55rem,1.1vw,0.8rem)] text-night-500">
             <div>
-              <p id="cert-date" class="font-medium text-ink"></p>
-              <div class="h-px bg-ink/20 my-2 mx-[15%]"></div>
+              <p id="cert-date" class="font-medium text-night"></p>
+              <div class="h-px bg-night/20 my-2 mx-[15%]"></div>
               <p>Date</p>
             </div>
             <div class="flex justify-center">
-              <div class="h-[clamp(3rem,8vw,5.5rem)] w-[clamp(3rem,8vw,5.5rem)] rounded-full border-2 border-clay/70 flex items-center justify-center font-serif text-clay text-[clamp(0.9rem,2.2vw,1.6rem)]">12</div>
+              <div class="h-[clamp(3rem,8vw,5.5rem)] w-[clamp(3rem,8vw,5.5rem)] rounded-full bg-accent text-white flex items-center justify-center font-display font-extrabold text-[clamp(0.9rem,2.2vw,1.6rem)]">12</div>
             </div>
             <div>
-              <p class="font-serif italic text-ink text-[clamp(0.9rem,1.8vw,1.3rem)]" id="cert-instructor"></p>
-              <div class="h-px bg-ink/20 my-2 mx-[15%]"></div>
+              <p class="font-serif italic text-night text-[clamp(0.9rem,1.8vw,1.3rem)]" id="cert-instructor"></p>
+              <div class="h-px bg-night/20 my-2 mx-[15%]"></div>
               <p>Instructor</p>
             </div>
           </div>
-          <p class="mt-[4%] text-[clamp(0.5rem,0.9vw,0.7rem)] text-ink-400">Certificate ID: <span id="cert-id"></span></p>
+          <p class="mt-[4%] text-[clamp(0.5rem,0.9vw,0.7rem)] text-mist-500">Certificate ID: <span id="cert-id"></span></p>
         </div>
       </div>
     </div>

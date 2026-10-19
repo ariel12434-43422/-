@@ -13,11 +13,21 @@ assets/js/
   site-config.js      כל הערכים שמשתנים: קישורי תשלום, Bunny library, אימייל
   course-data.js      12 הצעדים: כותרות, תיאורים, videoId, נתיבי חוברות
   auth.js             Auth + Progress (כרגע localStorage, בהמשך Supabase)
-  tailwind-theme.js   צבעים ופונטים משותפים
+  tailwind-theme.js   צבעים ופונטים משותפים (סגנון כהה בהשראת MasterClass)
+assets/css/site.css   רקעים קולנועיים, גרעיניות, קרוסלת שיעורים
+assets/img/           tim-hero.jpg, tim-portrait.jpg, lessons/step-01.jpg ...
 workbooks/            חוברות בסיס (step-01.pdf ... step-12.pdf)
 pro/                  חוברות מורחבות ומצגות (רק ל-Pro)
 _headers              כותרות אבטחה ו-noindex ל-Cloudflare Pages
 ```
+
+## תמונות
+
+כל עוד אין תמונה, מוצג רקע קולנועי כהה. ברגע שמוסיפים קובץ בנתיב הנכון הוא מופיע אוטומטית:
+
+- `assets/img/tim-hero.jpg`: תמונת הירו רוחבית, טים בצד ימין, רקע כהה (מומלץ 2400×1350)
+- `assets/img/tim-portrait.jpg`: פורטרט 4:5
+- `assets/img/lessons/step-01.jpg` עד `step-12.jpg`: תמונת 16:9 לכל שיעור
 
 ## הוספת סרטון כשטים מסיים להקליט
 
@@ -51,13 +61,13 @@ python3 -m http.server 8000   # http://localhost:8000
 
 ## מצב נוכחי: שלב 1 (UI)
 
-- ✅ עמוד נחיתה, התחברות, Dashboard, תעודה
+- ✅ עמוד נחיתה, התחברות, Dashboard, תעודה, בעיצוב כהה וקולנועי בהשראת MasterClass
 - ⚠️ **ההתחברות וההתקדמות מדומות ב-localStorage.** זה לא מאבטח תוכן; זה רק מאפשר לבנות ולבדוק את הממשק.
 - ⚠️ Tailwind נטען מ-CDN לפיתוח. לפני עלייה לאוויר עוברים ל-build (Tailwind CLI) לביצועים.
 
 ## השלבים הבאים
 
-1. התאמת העיצוב לדוגמה שנבחרה
+1. צילום טים: תמונת הירו, פורטרט ותמונה לכל שיעור
 2. Supabase: auth + טבלאות `enrollments`, `progress`, `certificates`
 3. Lemon Squeezy: מוצרים ($99, $199, upgrade) + webhook
 4. Bunny Stream: library + token auth function

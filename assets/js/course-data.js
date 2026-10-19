@@ -27,6 +27,7 @@ window.COURSE_STEPS = STEP_TITLES.map(([title, summary], i) => {
     summary,
     duration: null, // e.g. '42 min' once recorded
     videoId: null, // Bunny Stream video GUID
+    thumbnail: `assets/img/lessons/step-${pad(n)}.jpg`, // optional 16:9 still; gradient fallback if missing
     workbook: `workbooks/step-${pad(n)}.pdf`,
     proWorkbook: `pro/step-${pad(n)}-extended.pdf`,
     proSlides: `pro/step-${pad(n)}-slides.pdf`,
